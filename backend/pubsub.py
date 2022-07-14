@@ -12,6 +12,7 @@ load_dotenv()
 SUBSCRIBE_KEY = os.getenv("SUBSCRIBE_KEY")
 PUBLISH_KEY = os.getenv("PUBLISH_KEY")
 
+
 pnconfig = PNConfiguration()
 pnconfig.subscribe_key = SUBSCRIBE_KEY
 pnconfig.publish_key = PUBLISH_KEY
