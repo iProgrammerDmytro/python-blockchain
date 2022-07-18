@@ -40,7 +40,6 @@ def route_blockchain_mine():
 
 @app.route("/wallet/transact", methods=["POST"])
 def route_wallet_transact():
-    # {'recipient': 'foo', 'amount': 15}
     transaction_data = request.get_json()
     transaction = transaction_pool.existing_transaction(wallet.address)
 
