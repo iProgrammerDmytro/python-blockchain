@@ -13,7 +13,7 @@ from backend.pubsub import PubSub
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/*"})
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 blockchain = Blockchain()
 wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()
