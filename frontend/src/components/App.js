@@ -2,16 +2,6 @@ import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
 import { API_BASE_URL } from '../config';
 import Blockchain from "./Blockchain";
-import dayjs from 'dayjs';
-
-let start = dayjs().unix()
-setInterval(() => {
-  let now = dayjs().unix();
-  let diff = (now - start);
-  console.log(`${diff} second(s) passed`);
-  console.log(dayjs().unix());
-  console.log(dayjs())
-}, 5000);
 
 function App() {
   const [walletInfo, setWalletInfo] = useState({});
