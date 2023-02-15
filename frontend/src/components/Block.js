@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { MILISECONDS_PY } from "../config";
 import Transaction from "./Transaction";
 
-function Block({ block }) {
-  const { timestamp, hash, data } = block;
-  const hashDisplay = `${hash.substring(0, 15)}...`;
-  const timestampDisplay = new Date(timestamp / MILISECONDS_PY).toLocaleString();
+function ToggleTransactionDisplay({ block }) {
+  const [displayTransaction, setDisplayTransaction] = useState(false);
+  const { data } = block;
 
-  return (
-    <div className="Block">
-      <div>Hash: {hashDisplay}</div>
-      <div>Timestamp: {timestampDisplay}</div>
+  const toggleDisplayTransaction = () => {
+    setDisplayTransaction(!displayTransaction);
+  }
+
+  if (displayTransaction) {
+    return (
       <div>
         {
           data.map(transaction => (
@@ -20,7 +22,42 @@ function Block({ block }) {
             </div>
           ))
         }
-      </div>
+        <br />
+        <Button
+          variant="danger"
+          size="sm"
+          onClick={toggleDisplayTransaction}
+        >
+          Show Less
+        </Button>
+    </div>
+    )
+  }
+
+  return (
+    <div>
+      <br />
+      <Button
+        variant="danger"
+        size="sm"
+        onClick={toggleDisplayTransaction}
+      >
+        Show More
+      </Button>
+    </div>
+  )
+}
+
+function Block({ block }) {
+  const { timestamp, hash } = block;
+  const hashDisplay = `${hash.substring(0, 15)}...`;
+  const timestampDisplay = new Date(timestamp / MILISECONDS_PY).toLocaleString();
+
+  return (
+    <div className="Block">
+      <div>Hash: {hashDisplay}</div>
+      <div>Timestamp: {timestampDisplay}</div>
+      <ToggleTransactionDisplay block={block} />
     </div>
   )
 }
