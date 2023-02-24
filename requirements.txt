@@ -6,3 +6,4 @@ python-dotenv==0.20.0
 requests==2.22.0
 cryptography==39.0.1
 Flask-Cors==3.0.8
+flake8==6.0.0
